@@ -6,34 +6,42 @@ Node follows the CommonJS module system, and the builtin `require` function is t
 
 The basic functionality of `require` is that it reads a javascript file, executes the file, and then proceeds to return the `exports` object. An example module:
 
-    console.log("evaluating example.js");
+```javascript
+console.log("evaluating example.js");
 
-    var invisible = function () {
-      console.log("invisible");
-    }
+var invisible = function () {
+  console.log("invisible");
+}
 
-    exports.message = "hi";
+exports.message = "hi";
 
-    exports.say = function () {
-      console.log(message);
-    }
+exports.say = function () {
+  console.log(message);
+}
+```
 
 So if you run `var example = require('./example.js')`, then `example.js` will get evaluated and then `example` be an object equal to:
 
-    {
-      message: "hi",
-      say: [Function]
-    }
+```javascript
+{
+  message: "hi",
+  say: [Function]
+}
+```
 
 If you want to set the exports object to a function or a new object, you have to use the `module.exports` object. So for an example:
 
-    module.exports = function () {
-      console.log("hello world")
-    }
+```javascript
+module.exports = function () {
+  console.log("hello world")
+}
+```
 
----
+  ---
 
-    require('./example2.js')() //require the module and run the exports object
+```javascript
+require('./example2.js')() //require the module and run the exports object
+```
     
 ## Module Caching
 
